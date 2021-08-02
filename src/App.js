@@ -1,70 +1,29 @@
 import React from 'react'
 
-const Header = (props) => {
-    return (
-        <>
-            <h1>{props.title}</h1>
-        </>
-    )
-}
+const Hello = ({name, age}) => {
 
-const Content = (props) => {
-    return (
-        <>
-            <Part part={props.parts[0]}/>
-            <Part part={props.parts[1]}/>
-            <Part part={props.parts[2]}/>
-        </>
-    )
-}
+    const bornYear = () => new Date().getFullYear() -age
 
-const Part = (props) => {
+
     return (
-        <>
+        <div>
             <p>
-                {props.part.name} {props.part.exercises}
+                Hello {name}, you are {age} years old
             </p>
-        </>
-    )
-}
-
-const Total = (props) => {
-    let sum = 0
-    props.parts.forEach(part => {
-        sum += part.exercises
-    })
-
-    return (
-        <>
-            <p>Number of exercises {sum}</p>
-        </>
+            <p>So you were probably born in {bornYear()}</p>
+        </div>
     )
 }
 
 const App = () => {
-    const course = {
-        name: 'Half Stack application development',
-        parts: [
-            {
-                name: 'Fundamentals of React',
-                exercises: 10
-            },
-            {
-                name: 'Using props to pass data',
-                exercises: 7
-            },
-            {
-                name: 'State of a component',
-                exercises: 14
-            }
-        ]
-    }
+    const name = 'Peter'
+    const age = 10
 
     return (
         <div>
-            <Header title={course.name}/>
-            <Content parts={course.parts}/>
-            <Total parts={course.parts}/>
+            <h1>Greetings</h1>
+            <Hello name="Maya" age={26 + 10} />
+            <Hello name={name} age={age} />
         </div>
     )
 }
