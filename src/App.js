@@ -1,29 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-const Hello = ({name, age}) => {
-
-    const bornYear = () => new Date().getFullYear() -age
-
-
-    return (
-        <div>
-            <p>
-                Hello {name}, you are {age} years old
-            </p>
-            <p>So you were probably born in {bornYear()}</p>
-        </div>
-    )
-}
 
 const App = () => {
-    const name = 'Peter'
-    const age = 10
+    const [value, setValue] = useState(10)
+
+    const setToValue = (newValue) => () => {
+        setValue(newValue)
+    }
 
     return (
         <div>
-            <h1>Greetings</h1>
-            <Hello name="Maya" age={26 + 10} />
-            <Hello name={name} age={age} />
+            {value}
+            <button onClick={setToValue(1000)}>thousand</button>
+            <button onClick={setToValue(0)}>reset</button>
+            <button onClick={setToValue(value + 1)}>increment</button>
         </div>
     )
 }
